@@ -4,11 +4,13 @@ import { Mooli } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utills";
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 
-const mooli = Mooli({ 
+const mooli = Mooli({
   weight: "400",
-  style:  "normal",
-  subsets: ["latin"] });
+  style: "normal",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Papyrus",
@@ -22,15 +24,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body
-        className={cn(
-          "min-h-screen font-sans antialiased grainy",
-          mooli.className
-        )}
-      >
-        <Navbar />
-        {children}
-      </body>
+      <Providers>
+        <body
+          className={cn(
+            "min-h-screen font-sans antialiased grainy",
+            mooli.className
+          )}
+        >
+          <Navbar />
+          {children}
+        </body>
+      </Providers>
     </html>
   );
 }
